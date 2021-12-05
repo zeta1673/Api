@@ -28,6 +28,11 @@ public class ClienteController {
     public ArrayList<ClienteModel> obtenerClientes(){
         return  clienteService.obtenerClientes();
     }
+    
+    @GetMapping(path= "nombre/{nombre}")
+    public ArrayList<ClienteModel> getClientesByNombre(@PathVariable("nombre") String nombre){
+    	return clienteService.getClienteByNombre(nombre);
+    }
 
     @PostMapping()
     public ClienteModel guardarCliente(@RequestBody ClienteModel cliente){
@@ -47,7 +52,7 @@ public class ClienteController {
     
     @GetMapping(path = "/{id}")
     public Optional<ClienteModel> obtenerClientePorId(@PathVariable("id") String id){
-        return this.clienteService.obtenerClientePorId(id);
+        return clienteService.obtenerClientePorId(id);
     }
 
   

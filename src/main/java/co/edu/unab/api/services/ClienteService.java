@@ -24,7 +24,8 @@ public class ClienteService {
     }
 
     public ClienteModel guardarCliente(ClienteModel cliente){
-        cliente.setNombre(cliente.getNombre().toLowerCase()); //Opcional, convertir la cadena a minúscula para facilitar buscar por nombre , esto normalmente se hace desde el frontend 
+        cliente.setNombre(cliente.getNombre().toLowerCase());
+        cliente.setApellido(cliente.getApellido().toLowerCase());//Opcional, convertir la cadena a minúscula para facilitar buscar por nombre , esto normalmente se hace desde el frontend 
         return clienteRepository.save(cliente);
     }
 
@@ -42,6 +43,10 @@ public class ClienteService {
         
         return clienteRepository.findById(id);
     }  
+    
+    public ArrayList <ClienteModel> getClienteByNombre (String nombre){
+    	return clienteRepository.findByNombre(nombre);
+    }
     
    
 
