@@ -14,6 +14,14 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
+    public ArrayList<ClienteModel> getClientesNombreApellido(String nombre, String apellido){
+        return clienteRepository.clientesByNombreApellido(nombre, apellido);
+    }
+    
+    public ArrayList<ClienteModel> getClientesLessThanEqual(Long puntos){
+        return clienteRepository.findByPuntosLessThanEqual(puntos);
+    }
+
     public ArrayList<ClienteModel> getClientesGreaterThanEqual(Long puntos){
 		return clienteRepository.findByPuntosGreaterThanEqual(puntos);
     	
@@ -25,12 +33,11 @@ public class ClienteService {
 
     public ClienteModel guardarCliente(ClienteModel cliente){
         cliente.setNombre(cliente.getNombre().toLowerCase());
-        cliente.setApellido(cliente.getApellido().toLowerCase());//Opcional, convertir la cadena a minúscula para facilitar buscar por nombre , esto normalmente se hace desde el frontend 
+        cliente.setApellido(cliente.getApellido().toLowerCase());
         return clienteRepository.save(cliente);
     }
 
     public boolean eliminarCliente(String id){
-
         if (clienteRepository.existsById(id)){
             clienteRepository.deleteById(id);
             return true;
@@ -40,12 +47,15 @@ public class ClienteService {
                              
     }      
     public Optional<ClienteModel> obtenerClientePorId(String id){
-        
         return clienteRepository.findById(id);
     }  
     
     public ArrayList <ClienteModel> getClienteByNombre (String nombre){
     	return clienteRepository.findByNombre(nombre);
+    }
+
+    public ArrayList<ClienteModel> getClientesByCiudad (String ciudad){
+        return clienteRepository.clientesByCiudad(ciudad);
     }
     
    
