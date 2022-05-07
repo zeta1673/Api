@@ -21,8 +21,6 @@ public class ClienteModel {
     public ClienteModel() {
     }
 
-   
-
     public ClienteModel(String id, String nombre, String apellido, String telefono, LocalDate fRegistro, Long puntos,
             AddressModel address, List<ProductModel> productos) {
         this.id = id;
@@ -34,8 +32,6 @@ public class ClienteModel {
         this.address = address;
         this.productos = productos;
     }
-
-
 
     public String getId() {
         return id;
@@ -93,22 +89,12 @@ public class ClienteModel {
         this.productos = productos;
     }
 
-
-
     public Long getPuntos() {
         return puntos;
     }
 
-
-
     public void setPuntos(Long puntos) {
         this.puntos = puntos;
     }
-    
-    
-     
-   
-    
-    
-}
 
+}
